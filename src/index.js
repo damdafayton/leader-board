@@ -27,14 +27,13 @@ async function createGame() {
   const score = leaderBoardApi.elements.score.value;
   const data = { user, score };
 
-  let saveGame = await fetch(`${leaderBoardApi.action}games/${gameID}/scores/`, {
+  await fetch(`${leaderBoardApi.action}games/${gameID}/scores/`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json', // 'Content-Type': 'application/x-www-form-urlencoded',
     },
     body: JSON.stringify(data),
   });
-  saveGame = await saveGame.json();
 }
 
 const populateScores = (games) => {
@@ -49,7 +48,7 @@ const populateScores = (games) => {
       scoreList.appendChild(li);
     });
   }
-}
+};
 
 const leaderBoardSubmit = document.querySelector('#leaderboard-submit');
 const submitHandler = async (e) => {
@@ -61,13 +60,13 @@ const submitHandler = async (e) => {
   } else {
     createGame();
   }
-}
+};
 leaderBoardSubmit.addEventListener('click', submitHandler);
 
 const btnRefreshHandler = async () => {
   let games = await fetch(`${leaderBoardApi.action}games/${gameID}/scores/`);
   games = await games.json();
   populateScores(games.result);
-}
+};
 const btnRefresh = document.querySelector('#btn-refresh');
 btnRefresh.addEventListener('click', btnRefreshHandler);
