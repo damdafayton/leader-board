@@ -9,22 +9,22 @@
 </head>
 
 <body class="container my-4">
-    <h1>Leaderboard</h1>
+    <h1 class="my-4">Leaderboard</h1>
     <section class="d-flex gap-5 px-5">
-        <div class="col-md-4">
-            <div class="d-flex mb-2">
+        <div class="col-lg-4">
+            <div class="d-flex mb-2 align-items-baseline">
                 <h2>Recent scores</h2>
-                <button class="ms-auto" id="btn-refresh">Refresh</button>
+                <button class="ms-3 btn btn-warning" id="btn-refresh">Refresh</button>
             </div>
-            <ul id="score-list" class="border border-1 border-dark"></ul>
+            <ul id="score-list" class="list-group"></ul>
         </div>
-        <div class="col-md-4">
-            <h2>Add your score</h2>
+        <div class="col-lg-4">
+            <h2 class="mb-3">Add your score</h2>
             <form action="https://us-central1-js-capstone-backend.cloudfunctions.net/api/" class="d-flex flex-column"
-                method="POST" id="leaderboard-api">
-                <input type="text" name="user" id="user">
-                <input type="text" name="score" id="score">
-                <button class="ms-auto" id="leaderboard-submit">Submit</button>
+                method="POST" id="leaderboard-api" class="form-group">
+                <input type="text" name="user" id="user" class="form-control mb-3" placeholder="Your name">
+                <input type="text" name="score" id="score" class="form-control mb-3" placeholder="Your score">
+                <button class="ms-auto btn btn-info" id="leaderboard-submit">Submit</button>
             </form>
         </div>
     </section>

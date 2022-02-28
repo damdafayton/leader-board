@@ -39,11 +39,13 @@ const createGame = async () => {
 const populateScores = (games) => {
   if (games) {
     const scoreList = document.querySelector('#score-list');
+    scoreList.classList.add('border', 'border-1', 'border-dark');
     scoreList.innerHTML = '';
     games.forEach((game) => {
       const { user } = game;
       const { score } = game;
       const li = document.createElement('li');
+      li.classList.add('list-group-item');
       li.innerText = `${user}: ${score}`;
       scoreList.appendChild(li);
     });
