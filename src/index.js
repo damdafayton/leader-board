@@ -3,7 +3,7 @@ import './style.scss';
 const leaderBoardApi = document.querySelector('#leaderboard-api');
 
 let gameID = 0;
-async function createGameId() {
+const createGameId = async () => {
   const data = {
     name: 'leader board',
   };
@@ -20,9 +20,9 @@ async function createGameId() {
   const indexColumn = result.indexOf(':');
   const indexAdded = result.indexOf('added');
   gameID = result.substring(indexColumn + 2, indexAdded - 1);
-}
+};
 
-async function createGame() {
+const createGame = async () => {
   const user = leaderBoardApi.elements.user.value;
   const score = leaderBoardApi.elements.score.value;
   const data = { user, score };
@@ -30,11 +30,11 @@ async function createGame() {
   await fetch(`${leaderBoardApi.action}games/${gameID}/scores/`, {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json', // 'Content-Type': 'application/x-www-form-urlencoded',
+      'Content-Type': 'application/json',
     },
     body: JSON.stringify(data),
   });
-}
+};
 
 const populateScores = (games) => {
   if (games) {
