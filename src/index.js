@@ -33,7 +33,10 @@ const createGame = async () => {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(data),
-  });
+  }).then(() => {
+    leaderBoardApi.elements.user.value = ''
+    leaderBoardApi.elements.score.value = ''
+  })
 };
 
 const populateScores = (games) => {
