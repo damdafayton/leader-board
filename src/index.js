@@ -68,7 +68,7 @@ leaderBoardSubmit.addEventListener('click', submitHandler);
 const btnRefreshHandler = async () => {
   let games = await fetch(`${leaderBoardApi.action}games/${gameID}/scores/`);
   games = await games.json();
-  populateScores(games.result);
+  gameID && populateScores(games.result);
 };
 const btnRefresh = document.querySelector('#btn-refresh');
 btnRefresh.addEventListener('click', btnRefreshHandler);
