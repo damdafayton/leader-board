@@ -1,5 +1,11 @@
 import './style.scss';
 
+// Prevent bad ui during load
+window.addEventListener('load', () => {
+  const body = document.querySelector('body');
+  body.classList.remove('d-none');
+});
+
 const leaderBoardApi = document.querySelector('#leaderboard-api');
 
 let gameID = 0;
