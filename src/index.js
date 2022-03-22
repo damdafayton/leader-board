@@ -64,12 +64,16 @@ const populateScores = (games) => {
 const leaderBoardSubmit = document.querySelector('#leaderboard-submit');
 const submitHandler = async (e) => {
   e.preventDefault();
-
-  if (!gameID) {
-    await createGameId();
-    createGame();
+  const form = e.target.parentElement
+  if (form.checkValidity()) {
+    if (!gameID) {
+      await createGameId();
+      createGame();
+    } else {
+      createGame();
+    }
   } else {
-    createGame();
+    form.reportValidity()
   }
 };
 leaderBoardSubmit.addEventListener('click', submitHandler);
